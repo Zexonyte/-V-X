@@ -1,4 +1,4 @@
-# -V-X
+# !V'X
 
 An esoteric Pʹʹ-like language.
 
