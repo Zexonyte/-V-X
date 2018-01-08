@@ -1,4 +1,6 @@
+import time
 def interpret(prgm):
+    s = time.time()
     if prgm[-3:] != ".vx": prgm += ".vx"
     try: p = open(prgm).read()
     except FileNotFoundError: return "File not found"
@@ -21,19 +23,21 @@ def interpret(prgm):
                 if p[x] == "]" and lp != 0: lp -= 1
                 elif p[x] == ">": x += 1
             else: x += 4
-        elif p[x] == "!": m[mp+1] = m[mp]
+        elif p[x] == "!":
+            if mp == 255: m[0] = m[mp]
+            else: m[mp+1] = m[mp]
         elif p[x] == ">": mp = convert(p[x+1:x+5])
         elif p[x] == "&":
             if mp == 255: print(chr(m[mp]),end='',flush=True)
             else: print(m[mp],end=' ',flush=True)
         elif p[x] == "+":
             m[mp] += 1
-            if m[mp] == 256: m[mp] == 0
+            if m[mp] == 256: m[mp] = 0
         elif p[x] == "-":
             m[mp] -= 1
-            if m[mp] == -1: m[mp] == 255
+            if m[mp] < 0: m[mp] = 255
         x += 1
-    del x, l, lp, e, m, mp; print(); return "Finished interpreting program successfully"
+    del x, l, lp, e, m, mp; print(); return "Finished interpreting program successfully\nTime: %s"%(time.time()-s)
 def convert(b):
     n = ["0","0","0","0","0","0","0","0"]
     t = {".":[4,5,6,7],";":[0,1,2,3],":":[(4,0),(5,1),(6,2),(7,3)]}

@@ -30,4 +30,8 @@ The actual byte array:
 
 # A simple incrementer program:
 	
-	[&+#::::]
+	[+&#::::]
+
+# A not-so simple "Hello world!" program:
+	
+	>::::[+#.;||]&[+#|:;.]&+++++++&&+++&[-#..;|]&[-#||;|]&[+#|:.:]&[+#.::.]&+++&------&--------&[+#||;.]&
