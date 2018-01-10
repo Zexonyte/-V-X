@@ -4,7 +4,7 @@ def interpret(prgm, *args):
     if prgm[-3:] != ".vx": prgm += ".vx"
     try: p = open(prgm).read()
     except FileNotFoundError: return "File not found"
-    for a in args: int(a)
+    for a in args: a = int(a)
     x = 0
     a = 0
     l = [0,0,0,0]
