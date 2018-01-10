@@ -1,5 +1,5 @@
 import time
-def interpret(prgm, args*):
+def interpret(prgm, *args):
     s = time.time()
     if prgm[-3:] != ".vx": prgm += ".vx"
     try: p = open(prgm).read()
