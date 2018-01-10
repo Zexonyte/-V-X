@@ -4,7 +4,6 @@ def interpret(prgm, *args):
     if prgm[-3:] != ".vx": prgm += ".vx"
     try: p = open(prgm).read()
     except FileNotFoundError: return "File not found"
-    for a in args: a = int(a)
     x = 0
     a = 0
     l = [0,0,0,0]
@@ -27,7 +26,7 @@ def interpret(prgm, *args):
             else: x += 4
         elif p[x] == "!":
             if a == len(args): continue
-            else: m[mp] = args[a]; a += 1
+            else: m[mp] = int(args[a]); a += 1
         elif p[x] == ">": mp = convert(p[x+1:x+5])
         elif p[x] == "&":
             if mp == 255: print(chr(m[mp]),end='',flush=True)
@@ -50,11 +49,7 @@ def convert(b):
         elif b[x] == ":": n[t[":"][x][0]] = "1"; n[t[":"][x][1]] = "1"
     return int("".join(n),2)
 a = ""
-def next_0_reg(l):
-    for n in range(256):
-        if l[n] == 0: return n
-    return 0
 while True:
-    a = input("!V'X> ").split()
+    a = list(input("!V'X> ").split())
     if a[0] == ".quit": break
     else: print(interpret(a[0], *a[1:]))
