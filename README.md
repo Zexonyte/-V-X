@@ -16,8 +16,7 @@ These are the instructions:
 	>: Go to the register specified by the following byte.
 	+: Increment the value in the current register.
 	-: Decrement the value in the current register.
-	!: Move the value in the current register to the next register.
-		- If you use the ! operator when you're at the last register, it will assign the byte to register #0.
+	!: Overwrite the current register with the current command line argument.
 
 A byte in !V'X is represented by an array of dots (1) and whitespace/lines (0).
 
@@ -27,6 +26,8 @@ The actual byte array:
 
 	[7][6][5][4]
 	[3][2][1][0]
+	
+In !V'X, errors are _silently_ ignored. So if you made a mistake in your program, you would have to find it yourself.
 
 # A simple incrementer program:
 	
