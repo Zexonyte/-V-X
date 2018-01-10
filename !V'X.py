@@ -27,7 +27,7 @@ def interpret(prgm, args*):
             else: x += 4
         elif p[x] == "!":
             if a == len(args): continue
-            else: m[next_0_reg(m)] = args[a]; a += 1
+            else: m[mp] = args[a]; a += 1
         elif p[x] == ">": mp = convert(p[x+1:x+5])
         elif p[x] == "&":
             if mp == 255: print(chr(m[mp]),end='',flush=True)
